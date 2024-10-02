@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria /Judador-CPU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="two-player.js" async></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Panel de los dados -->
+        <div id="dice-and-stats">
+            <h1>¿Quién empieza?</h1>
+            <div id="dice-container">
+                    <div id="player-dice">
+                    <h2>Jugador </h2>
+                    <img src="dados/dado-rolling.gif" alt="Dado del jugador" id="player-dice-img">
+                </div>
+                <div id="cpu-dice">
+                    <h2>CPU </h2>
+                    <img src="dados/dado-rolling.gif" alt="Dado de la CPU" id="cpu-dice-img">
+                </div>
+            </div>
+            <button id="roll-dice">Tirar Dados</button>
+        </div>
+
+        <!-- Tablero del juego -->
+        <div id="cpu-game">
+            <h1>🃏 Tablero de Juego 🃏</h1>
+            <div id="cpu-game-board"></div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="statistics">
+            <div class="player-statistics">
+                <h2>🃏 Jugador 🃏</h2>
+                <h3 id="points-player">🏅 Aciertos: 0</h3>
+                <h3 id="moves-player">Movimientos: 0</h3>
+            </div>
+            <div class="computer-statistics">
+                <h2>🃏 CPU 🃏</h2>
+                <h3 id="points-computer">🏅 Aciertos: 0</h3>
+                <h3 id="moves-computer">Movimientos: 0</h3>
+            </div>
+        </div>
+        <!-- Panel de fin de juego -->
+        <div id="endGamePanel" style="display: none;">
+            <h2>Fin del juego</h2>
+            <button id="returnToMenu">Volver al menú</button>
+            <button id="startNewGame">Jugar otra vez</button>
+          </div>
+
+    </div>
+    <footer>
+        <p>Juego programado por Paula Lucumi y Helena Sanchis </p>
+    </footer>
+</body>
+</html>
+

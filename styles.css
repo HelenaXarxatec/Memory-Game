@@ -1,0 +1,467 @@
+/* General Styles */
+body {
+    background: rgb(255,24,24);
+    background: linear-gradient(90deg, rgba(255,24,24,1) 0%, rgba(251,29,253,1) 50%, rgba(252,246,69,1) 95%);
+    font-family: "Bungee", sans-serif;
+    font-weight: 400;
+    color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba(42, 127, 255, 0.615);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Main Container */
+main {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow:auto
+}
+
+/* Menu */
+.menu {
+    background-color: rgba(42, 127, 255, 0.4);
+    border: 2px solid rgba(0, 0, 0, 0.615);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.menu h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: rgb(255, 249, 80);
+    text-shadow: 
+        -6px 5px 0 #000,
+        -6px -1px 0 #000,
+        -6px 0px 0 #000,
+        1px 1px 0 #000;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-options button {
+    flex-grow: 1;
+    background-color: #c7275cbb;
+    color: rgb(255, 249, 80);
+    border: 2px solid rgba(0, 0, 0, 0.615);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: "Bungee", sans-serif;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,  
+        -1px 1px 0 #000,  
+        1px 1px 0 #000; 
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, font-size 0.3s;
+    width: 50%;
+}
+
+.menu-options button:hover {
+    background-color: rgba(42, 127, 255, 0.615);
+    color: #ffffff;
+}
+
+/* Solitaire and Two-Player Game Boards */
+.solitaire-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 1000px;
+    gap: 10px;
+}
+
+.section1 {
+    background-color: rgba(42, 127, 255, 0.615);
+    padding:20px 30px 20px 30px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.section1 h1 {
+    font-size: 2em;
+    color: rgb(255, 249, 80);
+    text-shadow: 
+        -6px 5px 0 #000,
+        -6px -1px 0 #000,
+        -6px 0px 0 #000,
+        1px 1px 0 #000;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    height: 70px;
+    width: 70px;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 50%;
+}
+
+button img {
+    width: 8vh;
+}
+
+#game-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px 0;
+}
+
+#cpu-game {
+    background-color: rgba(42, 127, 255, 0.615);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95vh;
+    height: 56vh;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#cpu-game h1 {
+    margin: 10px;
+    font-size: 2.5em;
+    color: rgb(255, 249, 80);
+    text-shadow: 
+        -6px 5px 0 #000,
+        -6px -1px 0 #000,
+        -6px 0px 0 #000,
+        1px 1px 0 #000;
+}
+
+#cpu-game-board {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: center;
+    max-width: 800px;
+    margin-bottom: 10px 0;
+} 
+
+.card {
+    width: 10vh;
+    height: 10vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+    transition: background-color 0.3s, opacity 0.3s, transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card img {
+    width: 9vh;
+    height: 9vh;
+    object-fit: cover;
+    display: none;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.flipped img {
+    display: block;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: rgba(255, 255, 255, 0.208);
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    background-color:rgba(255, 255, 255, 0.208);
+}
+
+/* Statistics Section */
+.section2 {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.8);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 45vh;
+    font-size: 0.8em;
+}
+
+.statistics {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.statistics h3 {
+    font-size: 1em;
+}
+
+.statistics h2 {
+    font-size: 1.6em;
+}
+
+.player-statistics, .computer-statistics {
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 35%;
+}
+
+.section2 button {
+    flex-grow: 1;
+    background-color: #c7275cd9;
+    color: rgb(255, 249, 80);
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: "Bungee", sans-serif;
+    text-shadow: -3px 1px 0 #000, -3px -2px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, font-size 0.3s;
+    width: 30vh;
+}
+
+/* Dice Section for Two-Player Mode */
+#dice-and-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vh;
+    height: 35vh;
+    max-width: 800px;
+    background-color:  rgba(42, 127, 255, 0.4);
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-family: "Bungee", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    color: rgb(255, 249, 80);
+    text-shadow: black;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,  
+        -1px 1px 0 #000,  
+        1px 1px 0 #000; 
+    font-size: 0.8em;
+}
+
+#dice-container {
+    gap: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#player-dice-img {
+    width: 12vh;
+    border-radius: 9px;
+}
+
+#cpu-dice-img {
+    width: 12vh;
+    border-radius: 9px;
+}
+
+#dice-and-stats button {
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 10px;
+    transition: background-color 0.3s, font-size 0.3s;
+    width: 40%;
+    height: 30%;
+    background-color: #c7275cbb;
+    color: rgb(255, 249, 80);
+    border: 2px solid rgba(0, 0, 0, 0.615);
+    font-family: "Bungee", sans-serif;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,  
+        -1px 1px 0 #000,  
+        1px 1px 0 #000; 
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#dice-container button:hover {
+    background-color: rgba(42, 127, 255, 0.615);
+    color: #ffffff;
+}
+
+/* EndGame panel */
+#endGamePanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    width: 80vh;
+    height: 36vh;
+    transform: translate(-50%, -50%);
+    background-color:  rgb(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    
+}   
+
+#endGamePanel h2 {
+    font-size: 2.2em; 
+    font-weight: bold;
+    color: rgb(73, 255, 82, 1);
+    text-shadow: 
+        0px -1px 0 #000,
+        -6px -1px #000,
+        -6px 4px 0 #000,
+        -6px 2px 0 #000;
+    margin-top: 10px;
+    margin-bottom: 30px; 
+}
+
+#endGamePanel button {
+    background-color: rgb(255, 64, 186, 1);
+    font-family: 'Bungee';
+    color: yellow;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,  
+        -1px 1px 0 #000,  
+        1px 1px 0 #000; ;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 42vh;
+    padding: 10px 50px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 8px 0; 
+    transition: background-color 0.3s ease;
+    max-width: 280px; 
+}
+
+#endGamePanel button:hover {
+    background-color: rgb(196, 0, 180);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+    main {
+        width: 80%;
+        margin: 50px auto;
+    }
+
+    .menu, .solitaire-container, #game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section1, .section-board {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .statistics h3{
+        font-size: 1em;
+    }
+
+    .statistics h2 {
+        font-size: 1.3em;
+    }
+}
