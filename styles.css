@@ -564,7 +564,10 @@ button img {
         width: 4.3vh;
         height: 4.3vh;
     }
-
+    .card img {
+        width:3vh;
+        height: 3vh;
+    }
     .statistics{
         width: 40vh;
     }
