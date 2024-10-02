@@ -580,6 +580,33 @@ button img {
     }
 }
 @media (max-width: 390px) {
+    /*Solitario*/
+    .section1 {
+        width: 5vh
+    }
+    .section1 h1 {
+        font-size: 1.2em;
+    }
+
+    .section1 button {
+        width: 3vh;
+        height: 3vh;
+    }
+
+    button img {
+        width: 1.5vh;
+    }
+
+    .section2 {
+        width: 35vh;
+        font-size: 0.6em;
+    }
+
+    .section2 button {
+        width: 15vh;
+        height: auto;
+    }
+    
     #dice-and-stats {
         width: 30vh;
         height: 25vh;
