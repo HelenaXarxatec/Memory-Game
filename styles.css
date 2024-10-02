@@ -576,3 +576,16 @@ button img {
         font-size: 0.6em;
     }
 }
+@media (max-width: 390px) {
+    #dice-and-stats {
+        width: 30vh;
+        height: 25vh;
+    }
+    #cpu-game h1 {
+        font-size: 1.3em !important;
+    }
+
+    .statistics h2 {
+        font-size: 0.7em !important;
+    }
+}
