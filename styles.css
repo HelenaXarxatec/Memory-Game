@@ -626,8 +626,26 @@ button img {
         width: 30vh;
         height: 25vh;
     }
+    #dice-and-stats h1 {
+        font-size: 0.7em;
+    }
+    #player-dice h2 {
+        font-size: 0.5em;
+    }
+
+    #player-dice img {
+        width: 3vh
+    }
+
+    #cpu-dice h2{
+        font-size: 0.5em;
+    }
+
+    #dice-and-stats button{
+        font-size: 0.5em;
+    }
     #cpu-game h1 {
-        font-size: 1.3em !important;
+        font-size: 1.2em !important;
     }
 
     .statistics h2 {
