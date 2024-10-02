@@ -18,6 +18,7 @@ body {
 footer {
     display: flex;
     justify-content: center;
+    text-align: center;
     padding: 10px;
     background-color: rgba(42, 127, 255, 0.615);
     position: fixed;
@@ -84,7 +85,7 @@ main {
     cursor: pointer;
     margin: 10px;
     transition: background-color 0.3s, font-size 0.3s;
-    width: 50%;
+    width: 40%;
 }
 
 .menu-options button:hover {
@@ -131,8 +132,8 @@ main {
 }
 
 button {
-    height: 70px;
-    width: 70px;
+    height: 10vh;
+    width: 10vh;
     font-size: 40px;
     font-weight: bold;
     background-color: #000000;
@@ -178,8 +179,8 @@ button img {
 }
 
 #cpu-game h1 {
-    margin: 10px;
-    font-size: 2.5em;
+    margin: 1%;
+    font-size: 2.3em;
     color: rgb(255, 249, 80);
     text-shadow: 
         -6px 5px 0 #000,
@@ -190,7 +191,7 @@ button img {
 
 #cpu-game-board {
     display: grid;
-    gap: 10px;
+    gap: 1vh;
     grid-template-columns: repeat(8, 1fr);
     justify-content: center;
     max-width: 800px;
@@ -200,6 +201,7 @@ button img {
 .card {
     width: 10vh;
     height: 10vh;
+    margin-bottom: 2%;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -304,7 +306,7 @@ button img {
     cursor: pointer;
     margin: 10px;
     transition: background-color 0.3s, font-size 0.3s;
-    width: 30vh;
+    width: 25vh;
 }
 
 /* Dice Section for Two-Player Mode */
@@ -318,8 +320,8 @@ button img {
     max-width: 800px;
     background-color:  rgba(42, 127, 255, 0.4);
     border: 1px solid black;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 2%;
+    margin-bottom: 5%;
     border-radius: 8px;
     font-family: "Bungee", sans-serif;
     font-weight: 400;
@@ -331,7 +333,10 @@ button img {
         1px -1px 0 #000,  
         -1px 1px 0 #000,  
         1px 1px 0 #000; 
-    font-size: 0.8em;
+}
+
+#dice-and-stats h1 {
+    font-size: 2em;
 }
 
 #dice-container {
@@ -358,7 +363,7 @@ button img {
     padding: 5px 10px;
     margin: 10px;
     transition: background-color 0.3s, font-size 0.3s;
-    width: 40%;
+    width: 52%;
     height: 30%;
     background-color: #c7275cbb;
     color: rgb(255, 249, 80);
@@ -441,27 +446,133 @@ button img {
 }
 
 /* Adjustments for Smaller Screens */
-@media (max-width: 768px) {
-    main {
-        width: 80%;
-        margin: 50px auto;
+@media (min-width: 1024px) {
+
+    .menu-options button {
+        width: 60%;
+        font-size: 1em;
+    }
+    #dice-and-stats h1 {
+        font-size: 1.9em;
+    }
+    #dice-and-stats h2 {
+        font-size: 1.5em;
+    }
+    #dice-stats button {
+        width: 9vh;
+        height: auto;
+    }
+    #player-dice img {
+        width: 10vh;
     }
 
+    #cpu-dice img {
+        width: 10vh;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: auto;
+        padding: auto;
+
+    }
+
+    main {
+        width: 80%;
+        margin: 20% auto;
+    }
+    /*Menu*/
     .menu, .solitaire-container, #game-container {
         flex-direction: column;
         align-items: center;
     }
 
+    .menu h1 {
+        font-size: 1.2em;
+    }
+
+    .menu-options button {
+        width: 60%;
+        height: 60%;
+        font-size: 0.9em;
+    }
+    /*SOLITARIO*/
     .section1, .section-board {
         width: 100%;
         max-width: 600px;
     }
 
-    .statistics h3{
+    .section1 h1 {
+        font-size: 1.4em;
+    }
+
+    .section1 button {
+        width: 5vh;
+        height: 5vh;
+    }
+
+    .section2 {
+        width: 30vh;
+        font-size: 0.8em;
+    }
+
+    .section2 button {
+        width: 15vh;
+        height: auto;
+    }
+    /*CPU*/
+    #dice-and-stats {
+        width: 30vh;
+        height: 20vh;
+        padding: 3vh;
+        margin: 2vh;
+    }
+
+    #dice-and-stats h1 {
+        font-size: 1.4em;
+    }
+    #player-dice h2 {
+        font-size: 1.2em;
+    }
+
+    #player-dice img {
+        width: 6vh
+    }
+
+    #cpu-dice h2{
         font-size: 1em;
     }
 
+    #cpu-dice img {
+        width: 6vh;
+    }
+
+    #cpu-game {
+        width: 40vh;
+        height: 25vh;
+        gap: 1vh;
+    }
+    
+    #cpu-game h1 {
+        padding: 0;
+        margin: 3%;
+        font-size: 1.5em !important;
+    }
+
+    .card {
+        width: 4.3vh;
+        height: 4.3vh;
+    }
+
+    .statistics{
+        width: 40vh;
+    }
     .statistics h2 {
-        font-size: 1.3em;
+        font-size: 0.9em;
+    }
+
+    .statistics h3{
+        font-size: 0.6em;
     }
 }
