@@ -475,7 +475,6 @@ button img {
      body {
         margin: auto;
         padding: auto;
-
     }
 
     /*Menu*/
@@ -592,9 +591,13 @@ button img {
     }
 }
 @media (max-width: 390px) {
+    body {
+        margin: 0;
+    }
     /*Solitario*/
     .section1 {
-        width: 30vh
+        width: 35vh;
+        height: 20vh;
     }
     .section1 h1 {
         font-size: 1.2em;
