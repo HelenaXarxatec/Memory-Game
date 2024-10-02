@@ -582,7 +582,7 @@ button img {
 @media (max-width: 390px) {
     /*Solitario*/
     .section1 {
-        width: 5vh
+        width: 35vh
     }
     .section1 h1 {
         font-size: 1.2em;
