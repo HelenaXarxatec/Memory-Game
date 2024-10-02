@@ -472,16 +472,12 @@ button img {
 }
 
 @media (max-width: 768px) {
-    body {
+     body {
         margin: auto;
         padding: auto;
 
     }
 
-    main {
-        width: 80%;
-        margin: 20% auto;
-    }
     /*Menu*/
     .menu, .solitaire-container, #game-container {
         flex-direction: column;
@@ -499,28 +495,38 @@ button img {
     }
     /*SOLITARIO*/
     .section1, .section-board {
-        width: 100%;
+        width: 40vh;
         max-width: 600px;
     }
 
     .section1 h1 {
-        font-size: 1.4em;
+        font-size: 1.2em;
     }
 
     .section1 button {
+        width: 6vh;
+        height: 6vh;
+    }
+
+    button img {
         width: 5vh;
-        height: 5vh;
     }
 
     .section2 {
-        width: 30vh;
-        font-size: 0.8em;
+        width: 35vh;
+        height: 35vh;
+    }
+
+    .section2 h2 {
+        font-size: 1em;
+        margin: 6%;
+
     }
 
     .section2 button {
-        width: 15vh;
-        height: auto;
+        width: 30vh;
     }
+
     /*CPU*/
     #dice-and-stats {
         width: 30vh;
@@ -530,67 +536,73 @@ button img {
     }
 
     #dice-and-stats h1 {
-        font-size: 1.4em;
+        font-size: 1em;
     }
     #player-dice h2 {
-        font-size: 1.2em;
+        font-size: 0.5em;
     }
 
     #player-dice img {
-        width: 6vh
+        width: 4vh
     }
 
     #cpu-dice h2{
-        font-size: 1em;
+        font-size: 0.5em;
+    }
+
+    #dice-and-stats button{
+        font-size: 0.5em;
     }
 
     #cpu-dice img {
-        width: 6vh;
+        width: 4vh;
     }
 
     #cpu-game {
-        width: 40vh;
-        height: 25vh;
+        width: 45vh;
+        height: 30vh;
         gap: 1vh;
     }
     
     #cpu-game h1 {
         padding: 0;
         margin: 3%;
-        font-size: 1.5em !important;
+        font-size: 1.3em !important;
     }
 
     .card {
         width: 4.3vh;
         height: 4.3vh;
     }
+
     .card img {
-        width:3vh;
+        width: 3vh;
         height: 3vh;
     }
+
     .statistics{
         width: 40vh;
     }
     .statistics h2 {
-        font-size: 0.9em;
+        font-size: 0.6em;
     }
 
     .statistics h3{
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
 }
 @media (max-width: 390px) {
     /*Solitario*/
     .section1 {
-        width: 35vh
+        width: 30vh
     }
     .section1 h1 {
         font-size: 1.2em;
     }
 
     .section1 button {
-        width: 3vh;
-        height: 3vh;
+        width: 5vh;
+        height: 5vh;
     }
 
     button img {
@@ -598,7 +610,7 @@ button img {
     }
 
     .section2 {
-        width: 35vh;
+        width: 25vh;
         font-size: 0.6em;
     }
 
