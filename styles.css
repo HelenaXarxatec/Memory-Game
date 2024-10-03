@@ -495,7 +495,6 @@ button img {
     /*SOLITARIO*/
     .section1, .section-board {
         width: 40vh;
-        height: 50vh;
         max-width: 600px;
     }
 
@@ -504,12 +503,12 @@ button img {
     }
 
     .section1 button {
-        width: 4vh;
-        height: 4vh;
+        width: 6vh;
+        height: 6vh;
     }
 
     button img {
-        width: 4vh;
+        width: 5vh;
     }
 
     .section2 {
