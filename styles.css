@@ -1,4 +1,4 @@
-/* General Styles */
+/* General */
 body {
     background: rgb(255,24,24);
     background: linear-gradient(90deg, rgba(255,24,24,1) 0%, rgba(251,29,253,1) 50%, rgba(252,246,69,1) 95%);
@@ -15,6 +15,15 @@ body {
     overflow: auto;
 }
 
+main {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -28,16 +37,6 @@ footer {
 
 footer p {
     margin: 0;
-}
-
-/* Main Container */
-main {
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow:auto
 }
 
 /* Menu */
@@ -93,7 +92,7 @@ main {
     color: #ffffff;
 }
 
-/* Solitaire and Two-Player Game Boards */
+/* Solitaire */
 .solitaire-container {
     display: flex;
     flex-direction: row;
@@ -153,7 +152,8 @@ button:hover {
 }
 
 button img {
-    width: 8vh;
+    width: 7vh;
+    height: 7vh;
 }
 
 #game-container{
