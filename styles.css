@@ -92,7 +92,7 @@ footer p {
     color: #ffffff;
 }
 
-/* Solitaire */
+/* Solitaire board */
 .solitaire-container {
     display: flex;
     flex-direction: row;
@@ -152,10 +152,9 @@ button:hover {
 }
 
 button img {
-    width: 7vh;
-    height: 7vh;
+    width: 8vh;
 }
-
+/*CPU board*/
 #game-container{
     display: flex;
     flex-direction: column;
@@ -247,7 +246,7 @@ button img {
     background-color:rgba(255, 255, 255, 0.208);
 }
 
-/* Statistics Section */
+/* Statistics */
 .section2 {
     border: 1px solid black;
     border-radius: 8px;
@@ -309,7 +308,7 @@ button img {
     width: 25vh;
 }
 
-/* Dice Section for Two-Player Mode */
+/* Dice Section for CPU board */
 #dice-and-stats {
     display: flex;
     flex-direction: column;
@@ -383,7 +382,7 @@ button img {
     color: #ffffff;
 }
 
-/* EndGame panel */
+/* EndGame panel for CPU board*/
 #endGamePanel {
     display: flex;
     flex-direction: column;
