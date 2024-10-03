@@ -1,14 +1,14 @@
-// Cargar los sonidos//
+// Sounds//
 let winAudio = new Audio('./sounds/win.wav');
 let loseAudio = new Audio('./sounds/lose.wav');  // este sonido no se usará en este juego//
 let clickAudio = new Audio('./sounds/click.wav');
 let rightAudio = new Audio('./sounds/rigth.wav');
 let wrongAudio = new Audio('./sounds/wrong.wav');
 
-// Array de imágenes para las cartas (16 imágenes diferentes, duplicadas para 16 pares)//
+// Images array for the cards (16 different images)//
 const images = [...Array(16).keys()].map(i => i + 1);
 
-// Función para mezclar el array de imágenes//
+// Function to shuffle the image array//
 function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
 }
@@ -23,18 +23,18 @@ let isProcessingCPU = false;
 let firstCardCPU = null;
 let revealedCards = []; // Array para almacenar las cartas reveladas
 
-// Función para inicializar el juego de la CPU//
+// Function to start CPU game//
 function initCPUGame() {
-    const shuffledImages = shuffle([...images, ...images]);  // Mezclar imágenes (2 de cada una)//
+    const shuffledImages = shuffle([...images, ...images]);  // Shuffle images//
     const gameBoard = document.getElementById('cpu-game-board');
-    gameBoard.innerHTML = '';  // Limpiar el tablero antes de agregar las cartas//
+    gameBoard.innerHTML = '';  // Clean the board before adding the cards//
 
-    // Crear cartas para el juego//
+    // Prepare cards for the game//
     shuffledImages.forEach((image, index) => {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.dataset.image = image;  // Guardar el valor de la imagen en un atributo de datos//
-        card.id = `card-${index}`;  // Asignar un id único a cada carta//
+        card.dataset.image = image;  // Keep the memory of the image//
+        card.id = `card-${index}`;  // Give a different id to each card//
 
         card.innerHTML = `
             <div class="card-front">
@@ -43,20 +43,20 @@ function initCPUGame() {
             <div class="card-back"></div>
         `;
 
-        // Añadir el evento de clic a cada carta//
+        // Add click event to each card//
         card.addEventListener('click', () => handleCardClickCPU(card));
         gameBoard.appendChild(card);  // Añadir la carta al tablero
     });
 }
 
-// Función que maneja el clic en las cartas del jugador//
+// Function for the click event in the players cards//
 function handleCardClickCPU(card) {
     if (isProcessingCPU || currentPlayer !== 'player' || card.classList.contains('flipped') || card.classList.contains('matched')) return;
 
     clickAudio.play();  // sonido click//
     flipCardCPU(card);
 
-    // Guardar la carta en la memoria//
+    // Keep cards in memory//
     rememberCard(card);
 
     if (!firstCardCPU) {
@@ -68,49 +68,46 @@ function handleCardClickCPU(card) {
     }
 }
 
-// Función que voltea la carta//
+// Function to flip cards//
 function flipCardCPU(card) {
-    if (!card) return;  // Verificar si la carta existe//
-    card.classList.add('flipped');  // Añadir clase 'flipped' para mostrar la carta//
+    if (!card) return;
+    card.classList.add('flipped');
 }
 
-// Función que comprueba si dos cartas coinciden//
+// Function to check if both cards are the same//
 function checkMatchCPU(card1, card2) {
-    isProcessingCPU = true;  // Bloquear nuevas acciones mientras se verifica la coincidencia//
+    isProcessingCPU = true;  // Block new actions while checking cards//
     setTimeout(() => {
         if (card1.dataset.image === card2.dataset.image) {
             card1.classList.add('matched');
             card2.classList.add('matched');
             
-            // Actualizar el estado de las cartas en el array//
             revealedCards.forEach(card => {
                 if (card.image === card1.dataset.image || card.image === card2.dataset.image) {
                     card.matched = true;  
                 }
             });
 
-            rightAudio.play();  // Sonido de acierto//
+            rightAudio.play();
             updateScoreCPU(currentPlayer);
         } else {
-            wrongAudio.play();  // Sonido de error//
+            wrongAudio.play();
             card1.classList.remove('flipped');
             card2.classList.remove('flipped');
-            switchPlayer();  // Cambiar el turno
+            switchPlayer();  
         }
-        resetTurnCPU();  // Reiniciar el turno//
-        isProcessingCPU = false;  // Permitir nuevas acciones//
-
+        resetTurnCPU();
+        isProcessingCPU = false;
 
         if (isGameOverCPU()) {
-            endGameCPU();  // Terminar el juego si todas las cartas coinciden//
+            endGameCPU();  // End game if all cards are matched//
         } else if (currentPlayer === 'cpu') {
-            // Añadir un retraso de 1 segundo antes de que la CPU juegue su turno//
-            setTimeout(playCpuTurn, 1000);  // Esperar 1 segundo//
+            setTimeout(playCpuTurn, 1000);
         }
-    }, 1000);  // Esperar 1 segundo antes de mostrar el resultado//
+    }, 1000);
 }
 
-// Actualiza puntajes//
+// Refresh points//
 function updateScoreCPU(player) {
     if (player === 'player') {
         playerScore++;
@@ -121,21 +118,17 @@ function updateScoreCPU(player) {
     }
 }
 
-// Reiniciar las cartas seleccionadas después de un turno//
 function resetTurnCPU() {
     firstCardCPU = null;
     isProcessingCPU = false;
 }
 
-// Cambiar turno entre jugador y CPU//
 function switchPlayer() {
     currentPlayer = currentPlayer === 'player' ? 'cpu' : 'player';
 }
 
-
-// Función para almacenar las cartas reveladas//
+//Function to keep the revealed cards in the CPU memory//
 function rememberCard(card) {
-    // Revisar si ya existe en la memoria//
     const cardInMemory = revealedCards.find(c => c.id === card.id);
     if (!cardInMemory) {
         revealedCards.push({
@@ -144,19 +137,14 @@ function rememberCard(card) {
             matched: card.classList.contains('matched')
         });
     }
-
-
 }
 
-// Jugada de la CPU//
 function playCpuTurn() {
     if (isGameOverCPU()) return;
-
-    cpuMoves++;  // Incrementar los movimientos de la CPU//
-    updateMoves();  // Actualizar el contador de movimientos//
-
-    // Revisar la memoria de la CPU para ver si tiene una pareja no emparejada//
-    const unmatchedCards = revealedCards.filter(c => !c.matched);  // Filtrar cartas no emparejadas//
+    cpuMoves++;
+    updateMoves();
+    
+    const unmatchedCards = revealedCards.filter(c => !c.matched);
     const cardPairs = {};
 
     unmatchedCards.forEach(c => {
@@ -167,24 +155,21 @@ function playCpuTurn() {
         }
     });
 
-    // Buscar una pareja en la memoria de la CPU//
+    // Look for a match in CPU's memory//
     const match = Object.values(cardPairs).find(pair => pair.length === 2);
 
     let card1;
     let card2;
 
     if (match) {
-        // Si encontramos una pareja, seleccionarla//
         card1 = document.getElementById(match[0].id);
         card2 = document.getElementById(match[1].id);
-
-        // Verificar que ambas cartas existen antes de intentar voltearlas y que las imágenes coinciden//
+        
         if (!card1 || !card2 || card1.dataset.image !== card2.dataset.image) {
             console.error('Cartas no coinciden o no se encuentran en el DOM.');
             return;
         }
 
-        // Reproducir sonido de clic al voltear ambas cartas
         setTimeout(() => {
             clickAudio.play(); 
             flipCardCPU(card1);
@@ -195,21 +180,15 @@ function playCpuTurn() {
             }, 1000);
         }, 1000);
     } else {
-        // Si no hay pareja en la memoria, elegir dos cartas al azar//
         const availableCards = document.querySelectorAll('#cpu-game-board .card:not(.flipped):not(.matched)');
         card1 = availableCards[Math.floor(Math.random() * availableCards.length)];
 
-        
         clickAudio.play(); 
         flipCardCPU(card1);
-
-        // Guardar la carta en la memoria//
         rememberCard(card1);
-
         setTimeout(() => {
             const remainingCards = document.querySelectorAll('#cpu-game-board .card:not(.flipped):not(.matched)');
             card2 = remainingCards[Math.floor(Math.random() * remainingCards.length)];
-
             
             clickAudio.play(); 
             flipCardCPU(card2);
@@ -219,15 +198,12 @@ function playCpuTurn() {
     }
 }
 
-
-// Verificar si el juego ha terminado//
 function isGameOverCPU() {
-    return document.querySelectorAll('.card.matched').length === 32;  // 32 cartas (16 pares)
+    return document.querySelectorAll('.card.matched').length === 32;
 }
 
-// Terminar el juego//
 function endGameCPU() {
-    winAudio.play();  // sonido de victoria//
+    winAudio.play();  
     setTimeout(() => {
         if (playerScore > cpuScore) {
         window.alert(`¡Fin del juego! El ganador 🏆 es:  Jugador 🎉🎉🎉 con ${playerScore} pares.`);
@@ -240,26 +216,22 @@ function endGameCPU() {
     }, 1000);
 }
 
-// Actualizar el contador de movimientos//
 function updateMoves() {
     document.getElementById('moves-player').textContent = `Movimientos: ${playerMoves}`;
     document.getElementById('moves-computer').textContent = `Movimientos: ${cpuMoves}`;
 
-    // Actualizar aciertos por separado en sus propios elementos
     document.getElementById('points-player').textContent = `🏅 Aciertos: ${playerScore}`;
     document.getElementById('points-computer').textContent = `🏅 Aciertos: ${cpuScore}`;
 }
 
-// decide quien inicia la partida//
+// Decide who starts the game//
 document.getElementById('roll-dice').addEventListener('click', () => {
     const playerRoll = Math.floor(Math.random() * 6) + 1;
     const cpuRoll = Math.floor(Math.random() * 6) + 1;
 
-    // Actualizar imágenes de los dados//
     document.getElementById('player-dice-img').src = `dados/dado${playerRoll}.png`;
     document.getElementById('cpu-dice-img').src = `dados/dado${cpuRoll}.png`;
 
-    // Verificar si hay empate//
     if (playerRoll === cpuRoll) {
         alert('Empate en los dados. ¡Vuelve a tirar!');
         document.getElementById('roll-dice').disabled = false; // Dejar el botón habilitado para volver a tirar//
@@ -267,8 +239,7 @@ document.getElementById('roll-dice').addEventListener('click', () => {
         currentPlayer = playerRoll >= cpuRoll ? 'player' : 'cpu';
         document.getElementById('roll-dice').disabled = true; // Deshabilitar el botón después de la tirada//
 
-        // Mostrar quién comienza y proceder al turno correspondiente//
-        setTimeout(() => {
+            setTimeout(() => {
             alert(`Jugador: ${playerRoll}, CPU: ${cpuRoll}. Empieza ${currentPlayer === 'player' ? 'Jugador' : 'CPU'}`);
             if (currentPlayer === 'cpu') {
                 playCpuTurn();  // Iniciar turno de la CPU si gana el dado
@@ -276,11 +247,10 @@ document.getElementById('roll-dice').addEventListener('click', () => {
         }, 800);
     }
 });
-// Iniciar el juego al cargar la página//
 initCPUGame();
 resetTurnCPU();
 
-// aparece panel del juego, se decide volver a inicio o iniciar una nueva partida, desaparece despues de escoger//
+// Show endGame panel and make it disappear after making a choice//
 function showEndGamePanel() {
     document.getElementById('endGamePanel').style.display = 'flex';
   }
@@ -321,8 +291,7 @@ function showEndGamePanel() {
   
   document.getElementById('returnToMenu').addEventListener('click', returnToMenu);
   document.getElementById('startNewGame').addEventListener('click', startNewGame);
-  
-  
+    
   const originalEndGameCPU = endGameCPU;
   endGameCPU = function() {
     originalEndGameCPU();
